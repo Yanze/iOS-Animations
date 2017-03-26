@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IcM-KX-pfD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IcM-KX-pfD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,14 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg7" translatesAutoresizingMaskIntoConstraints="NO" id="U7d-lB-MrR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg7" translatesAutoresizingMaskIntoConstraints="NO" id="U7d-lB-MrR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xSL-Ff-Sm4">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSL-Ff-Sm4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="gsF-q3-HKy">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gsF-q3-HKy">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
@@ -36,6 +34,20 @@
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U7d-lB-MrR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8wQ-Xc-dxO"/>
+                            <constraint firstItem="xSL-Ff-Sm4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BSn-6e-Ut4"/>
+                            <constraint firstItem="U7d-lB-MrR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NN9-il-YDu"/>
+                            <constraint firstAttribute="trailing" secondItem="xSL-Ff-Sm4" secondAttribute="trailing" id="XRu-wu-mQa"/>
+                            <constraint firstItem="xSL-Ff-Sm4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bmf-WK-1Vo"/>
+                            <constraint firstItem="U7d-lB-MrR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gmZ-xe-UXw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="U7d-lB-MrR" secondAttribute="bottom" id="n6b-te-ICb"/>
+                            <constraint firstAttribute="trailing" secondItem="U7d-lB-MrR" secondAttribute="trailing" id="tGc-Hp-bt5"/>
+                            <constraint firstItem="U7d-lB-MrR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tOI-Nz-oFV"/>
+                            <constraint firstItem="xSL-Ff-Sm4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ucS-ME-cYz"/>
+                            <constraint firstItem="xSL-Ff-Sm4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xou-f0-ywQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xSL-Ff-Sm4" secondAttribute="bottom" id="zee-aS-GFM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aMm-su-JPp">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tkN-gd-YJz">
