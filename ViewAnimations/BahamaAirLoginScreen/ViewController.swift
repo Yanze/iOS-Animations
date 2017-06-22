@@ -22,13 +22,8 @@
 
 import UIKit
 
+
 // A delay function
-// A delay function
-func delay(_ seconds: Double, completion: @escaping ()->Void) {
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(Int(seconds * 1000.0))) {
-        completion()
-    }
-}
 
 class ViewController: UIViewController {
 
@@ -137,8 +132,9 @@ class ViewController: UIViewController {
     UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping:
         0.2, initialSpringVelocity: 0.0, options: [], animations: {
             self.loginButton.bounds.size.width += 80.0
-            self.showMessage(index: 0)
-    }, completion: nil)
+    }, completion: {_ in // the completion closure takes one Bool parameter to let you know if it's completed, if we don;t care about that, we can use _
+        self.showMessage(index: 0)
+    })
     
     UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping:
         0.7, initialSpringVelocity: 0.0, options: [], animations: {
@@ -158,8 +154,32 @@ class ViewController: UIViewController {
     func showMessage(index: Int) {
         label.text = messages[index]
         // .transitionCurlDown animates the view like a sheet of paper being flipped down on a legal pad
-        UIView.transition(with: status, duration: 0.33, options: [.curveEaseOut, .transitionCurlDown], animations: { 
+        UIView.transition(with: status, duration: 0.33, options: [.curveEaseOut, .transitionCurlDown], animations: {
             self.status.isHidden = false
+        }, completion: {_ in
+            self.delay(2.0, completion: { 
+                if index < self.messages.count - 1 {
+                    self.removeMessage(index: index)
+                }else {
+                    // reset form
+                    self.resetForm()
+                }
+            })
+        
+        })
+    }
+    
+    func resetForm() {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.transitionCurlDown, .transitionCurlUp], animations: {
+            self.spinner.center = CGPoint(
+                x: -20.0,
+                y: 16.0
+            )
+            self.spinner.alpha = 0.0
+            self.loginButton.backgroundColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+            self.loginButton.bounds.size.width -= 80
+            self.loginButton.center.y -= 60
+            self.status.isHidden = true
         }, completion: nil)
     }
     
@@ -180,5 +200,12 @@ class ViewController: UIViewController {
     nextField?.becomeFirstResponder()
     return true
   }
+    
+    func delay(_ seconds: Double, completion: @escaping ()->Void) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(Int(seconds * 1000.0))) {
+            completion()
+        }
+    }
+
 
 }
