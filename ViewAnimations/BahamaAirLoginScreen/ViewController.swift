@@ -23,7 +23,6 @@
 import UIKit
 
 
-// A delay function
 
 class ViewController: UIViewController {
 
@@ -73,6 +72,7 @@ class ViewController: UIViewController {
     label.textColor = UIColor(red: 0.89, green: 0.38, blue: 0.0, alpha: 1.0)
     label.textAlignment = .center
     status.addSubview(label)
+
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -104,16 +104,24 @@ class ViewController: UIViewController {
     
     UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseIn, animations: {
         self.cloud1.alpha = 1.0
-    }, completion: nil)
+    }, completion: {_ in
+            self.animateCloud(self.cloud1)
+    })
     UIView.animate(withDuration: 0.5, delay: 0.9, options: .curveEaseIn, animations: {
         self.cloud2.alpha = 1.0
-    }, completion: nil)
+    }, completion: {_ in
+        self.animateCloud(self.cloud2)
+    })
     UIView.animate(withDuration: 0.5, delay: 1.1, options: .curveEaseIn, animations: {
         self.cloud3.alpha = 1.0
-    }, completion: nil)
+    }, completion:{_ in
+        self.animateCloud(self.cloud3)
+    })
     UIView.animate(withDuration: 0.5, delay: 1.3, options: .curveEaseIn, animations: {
         self.cloud4.alpha = 1.0
-    }, completion: nil)
+    }, completion: {_ in
+        self.animateCloud(self.cloud4)
+    })
     
     UIView.animate(withDuration: 0.5, delay: 0.5,
                    usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [],
@@ -192,9 +200,20 @@ class ViewController: UIViewController {
             self.showMessage(index: index + 1)
         }
     }
+    
+    func animateCloud(_ cloud: UIImageView) {
+        let cloudSpeed = 60.0 / view.frame.size.width // to cross the entire length of the screen in about 60 seconds
+        let duration = (view.frame.size.width - cloud.frame.origin.x) * cloudSpeed
+        
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0.0, options: .curveLinear, animations: { 
+            cloud.frame.origin.x = self.view.frame.size.width // move the cloud outside the screen
+        }) { (_ ) in
+            cloud.frame.origin.x = -cloud.frame.size.width
+            self.animateCloud(cloud)
+        }
+    }
 
   // MARK: UITextFieldDelegate
-
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     let nextField = (textField === username) ? password : username
     nextField?.becomeFirstResponder()
